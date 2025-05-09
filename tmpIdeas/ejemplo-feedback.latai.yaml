@@ -1,0 +1,244 @@
+### =============== AI FEEDBACK FILE ===============
+### This file stores evaluations and feedback for an AI-generated output
+### It is designed to align with the structure of a PPM file
+### and allows benchmarking, analysis, and CI-based comparison.
+### All values use the same terms and conventions as PPM for consistency.
+
+### =============== PARAMS SECTION ===============
+## Params are reusable placeholders used in the file. They are resolved at runtime when building dashboards or reports.
+
+Params:
+  basePath: /u01/app/ai/input
+  fullReviewDoc1: ${basePath}/review1.docx
+  fullReviewDoc2: ${basePath}/screenshots.pdf
+
+
+
+### =============== AUTHORING SECTION ===============
+## This section contains authoring information. It's equivalent to the metadata section in PPM.
+
+Authoring:
+  authors:
+    - name: David S
+      email: david@latai.fuziontek.co
+    - name: Andres QA
+      email: andres@latai.fuziontek.co
+  copyright: © 2025 David S / Latai Framework
+
+
+
+### =============== MODEL + EXECUTION METADATA ===============
+## This section ties the feedback to a specific PPM generation.
+
+ModelGeneration:
+  usedPPM: /latai/MyExcelParserGenerator.ppm.yaml      # REQUIRED
+  generatedBy: gpt-4.5                                  # REQUIRED
+  generatedTime: 2025-05-01T12:45:00Z                   # Optional, default = file timestamp
+  evaluatedBy: human-review                             # Optional, default = human-review
+
+
+
+### =============== CONFIG SECTION ===============
+## Mirrors the PPM's Config block. Used for analysis, not required to be present.
+
+Config:
+  provider: openai
+  model: gpt
+  version: 4.5
+  extension: thinking-model
+  params:
+    - name: temperature     # Optional param | Range: 0.0 – 1.0
+      value: 0.7
+    - name: top_p
+      value: 0.9
+    - name: max_tokens
+      value: 256
+    - name: presence_penalty
+      value: 1.0
+    - name: stop
+      value: ["User:", "###"]
+    - name: user_defined_param
+      value: custom-mode
+
+
+
+### =============== EVALUATION SECTION ===============
+## Evaluation is MANDATORY.
+## REQUIRED fields: usefulness, correctness, actualUsageRatio
+## All values must use 1 decimal only. Use 0.0 or null to mark as not evaluated / not applicable.
+
+evaluation:
+  usefulness: 8.5              ## How helpful was the result for the final goal? | Range: 0.0–9.9
+  correctness: 9.0             ## How accurate is the logic and behavior? | Range: 0.0–9.9
+  actualUsageRatio: 0.65       ## % of reused code with no/low changes | Range: 0.0–1.0
+  manualCorrectionsNeeded: 2   ## Integer ≥ 0
+  coverage: 7.5                ## % of the full functionality delivered | Range: 0.0–9.9
+  hallucinationRisk: medium    ## Options: low, medium, high, n/a
+  modelConfidence: 0.87        ## Model-estimated confidence | Range: 0.0–1.0 or n/a
+  reusabilityScore: 8.0        ## Can be reused in future contexts? | Range: 0.0–9.9
+
+
+
+### =============== CODE QUALITY SECTION ===============
+## codeQuality is MANDATORY.
+## REQUIRED fields: codeQualityScore, performanceScore, securityRisk
+## Use 0.0 or null for "not evaluated" where applicable.
+
+codeQuality:
+  codeQualityScore: 7.5        ## Naming, structure, comments | Range: 0.0–9.9
+  patternAlignment: 8.0        ## Design pattern alignment | Range: 0.0–9.9
+  readabilityScore: 9.0        ## Human readability | Range: 0.0–9.9
+  performanceScore: 6.5        ## Execution efficiency | Range: 0.0–9.9
+  securityRisk: low            ## Options: low, medium, high, n/a
+
+
+
+### =============== COMMENTS SECTION ===============
+## Multi-format comments allowed. "files" can reference attachments or extended docs.
+
+comments:
+  files:
+    - ${fullReviewDoc1}
+    - ${fullReviewDoc2}
+  notes:
+    - "The output was mostly accurate but missed one DB column mapping."
+    - "Variable naming was inconsistent with project standards."
+    - "Parsing logic had minor inefficiencies but worked end-to-end."
+    - "Reusable and clean design, but error-handling could be more robust."
+
+
+
+### =============== OPTIONAL - EXTRAINFORMATION ===============
+## Arbitrary metadata the team wants to track for context or future comparison. Ignored by parsers.
+
+ExtraInfo:
+  scenario: "proof-of-concept"
+  additionalTags: [early-experiment, benchmark]
+  reviewerSetup: "macOS + IntelliJ + GPT Console CLI v1.1"
+  notesFromTeam: |
+    Este prompt fue probado con validadores nuevos.
+    QA automatizado encontró una falla menor en la cobertura de datos nulos.
+
+
+
+
+
+
+
+
+
+### =============== AI FEEDBACK FILE ===============
+### This file stores evaluations and feedback for an AI-generated output
+### It is designed to align with the structure of a PPM file
+### and allows benchmarking, analysis, and CI-based comparison.
+### All values use the same terms and conventions as PPM for consistency.
+
+### =============== PARAMS SECTION ===============
+## Params are reusable placeholders used in the file. They are resolved at runtime when building dashboards or reports.
+
+Params:
+  basePath: /u01/app/ai/input
+  fullReviewDoc1: ${basePath}/review1.docx
+  fullReviewDoc2: ${basePath}/screenshots.pdf
+
+
+### =============== AUTHORING SECTION ===============
+## This section contains authoring information. It's equivalent to the metadata section in PPM.
+
+Authoring:
+  authors:
+    - name: David S
+      email: david@latai.fuziontek.co
+    - name: Andres QA
+      email: andres@latai.fuziontek.co
+  copyright: © 2025 David S / Latai Framework
+
+
+### =============== MODEL + EXECUTION METADATA ===============
+## This section ties the feedback to a specific PPM generation.
+
+ModelGeneration:
+  usedPPM: /latai/MyExcelParserGenerator.ppm.yaml      # REQUIRED
+  generatedBy: gpt-4.5                                  # REQUIRED
+  generatedTime: 2025-05-01T12:45:00Z                   # Optional, default = file system timestamp
+  evaluatedBy: human-review                             # Optional, default = human-review
+
+
+### =============== CONFIG SECTION ===============
+## Mirrors the PPM's Config block. Used for analysis, not required to be present.
+
+Config:
+  provider: openai
+  model: gpt
+  version: 4.5
+  extension: thinking-model
+  params:
+    - name: temperature     # Optional param | Range: 0.0 – 1.0
+      value: 0.7
+    - name: top_p
+      value: 0.9
+    - name: max_tokens
+      value: 256
+    - name: presence_penalty
+      value: 1.0
+    - name: stop
+      value: ["User:", "###"]
+    - name: user_defined_param
+      value: custom-mode
+
+
+### =============== EVALUATION SECTION ===============
+## Evaluation is MANDATORY.
+## REQUIRED fields: usefulness, correctness, actualUsageRatio
+## All values must use 1 decimal only. Use 0.0 or null to mark as not evaluated / not applicable.
+
+evaluation:
+  usefulness: 8.5              ## How helpful was the result for the final goal? | Range: 0.0–9.9
+  correctness: 9.0             ## How accurate is the logic and behavior? | Range: 0.0–9.9
+  actualUsageRatio: 0.65       ## % of reused code with no/low changes | Range: 0.0–1.0
+  manualCorrectionsNeeded: 2   ## Integer ≥ 0
+  coverage: 7.5                ## % of the full functionality delivered | Range: 0.0–9.9
+  hallucinationRisk: medium    ## Options: low, medium, high, n/a
+  modelConfidence: 0.87        ## Model-estimated confidence | Range: 0.0–1.0 or n/a
+  reusabilityScore: 8.0        ## Can be reused in future contexts? | Range: 0.0–9.9
+
+
+### =============== CODE QUALITY SECTION ===============
+## codeQuality is MANDATORY.
+## REQUIRED fields: codeQualityScore, performanceScore and securityRisk.
+## Use 0.0 or null for "not evaluated" where applicable.
+
+codeQuality:
+  codeQualityScore: 7.5        ## Naming, structure, comments | Range: 0.0–9.9
+  patternAlignment: 8.0        ## Design pattern alignment | Range: 0.0–9.9
+  readabilityScore: 9.0        ## Human readability | Range: 0.0–9.9
+  performanceScore: 6.5        ## Execution efficiency | Range: 0.0–9.9
+  securityRisk: low            ## Options: low, medium, high, n/a
+
+
+### =============== COMMENTS SECTION ===============
+## Multi-format comments allowed. "files" can reference attachments or extended docs.
+
+comments:
+  files:
+    - ${fullReviewDoc1}
+    - ${fullReviewDoc2}
+  notes:
+    - "The output was mostly accurate but missed one DB column mapping."
+    - "Variable naming was inconsistent with project standards."
+    - "Parsing logic had minor inefficiencies but worked end-to-end."
+    - "Reusable and clean design, but error-handling could be more robust."
+
+
+### =============== OPTIONAL - EXTRAINFORMATION ===============
+## Arbitrary metadata the team wants to track for context or future comparison. Ignored by parsers.
+
+ExtraInfo:
+  scenario: "proof-of-concept"
+  additionalTags: [early-experiment, benchmark]
+  reviewerSetup: "macOS + IntelliJ + GPT Console CLI v1.1"
+  notesFromTeam: |
+    Este prompt fue probado con validadores nuevos.
+    QA automatizado encontró una falla menor en la cobertura de datos nulos.
+
+

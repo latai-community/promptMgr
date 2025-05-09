@@ -1,0 +1,343 @@
+### =============== LATAI PPM FILE ===============
+### Main declarative specification for orchestrating AI prompt generation with Latai
+### Defines base prompts, modular fragments, reusable parameters, inputs, expected outputs,
+### and configurations for a specific software artifact or application.
+### This file is designed for multi-module projects and reproducible prompt-driven development.
+
+### =============== PARAMS SECTION ===============
+## Reusable placeholders that can be referenced as ${paramName} anywhere in the file.
+
+Params:
+  basePath: /u01/app/ai/input
+  outputPath: /u01/app/ai/output
+  reviewerName: David S
+  teamName: Latai Framework
+
+  introFragment: |
+    Este sistema transforma archivos Excel en entradas válidas para bases de datos SQL.
+    Utiliza buenas prácticas de Java, validación de datos y generación dinámica de esquemas.
+
+  dataValidationRules: |
+    - Validar nulos en columnas críticas
+    - Asegurar tipos de dato numérico en columnas ["cantidad", "precio"]
+    - Aplicar reglas condicionales por país (si aplica)
+
+  closingFragment: |
+    Por favor incluye comentarios en el código generado,
+    y respeta las convenciones de nombres, clases y métodos como en los ejemplos dados.
+
+
+
+### =============== AUTHORING SECTION ===============
+## Descripción de autores y derechos de uso. Refleja la sección Authoring del feedback.
+
+Authoring:
+  authors:
+    - name: David S
+      email: david@latai.fuziontek.co
+    - name: System Latai
+      email: system@latai.framework
+  copyright: © 2025 David S / Latai Framework
+
+
+
+### =============== PROMPT INHERITANCE ===============
+## List of base prompt PPM files to inherit from. Order matters.
+
+ParentPrompts:
+  - base.ppm.yaml
+  - cleanCodePolicies.ppm.yaml
+
+
+
+### =============== PROMPT SECTION ===============
+## Defines the logical structure of the main prompt.
+## You can use string fragments, inline YAML text blocks, or reference Params.
+
+Prompt:
+  - ${introFragment}
+  - "Gpy, crea un programa en Java que lea un archivo Excel adjunto y lo convierta en un conjunto de INSERT SQL."
+  - "El sistema debe validar los datos siguiendo estas reglas: ${dataValidationRules}"
+  - ${closingFragment}
+
+
+
+### =============== MODULES SECTION ===============
+## List of logical prompt modules that support this generation process. Not inherited.
+
+Modules:
+  - mod-excel-parser
+  - mod-db-writer
+  - mod-validator-rules
+  - mod-logging-config
+
+
+
+### =============== EFFECTIVE PROMPT SECTION ===============
+## Defines the output location for the fully compiled Effective Prompt
+
+EffectivePPM:
+  output: ${outputPath}/EffectivePrompt.ppm.txt
+
+
+
+### =============== CONFIG SECTION ===============
+## Configuration of the model to use and its generation behavior.
+## This mirrors the Config block in the ai-feedback.yaml file.
+
+Config:
+  provider: openai
+  model: gpt
+  version: 4.5
+  extension: thinking-model
+  params:
+    - name: temperature
+      value: 0.65
+    - name: top_p
+      value: 0.85
+    - name: max_tokens
+      value: 512
+    - name: presence_penalty
+      value: 0.9
+    - name: stop
+      value: ["User:", "###"]
+    - name: user_defined_behavior
+      value: enforce-camelCase
+
+
+
+### =============== INPUT SECTION ===============
+## Defines all supporting files given to the AI model. These are contextual but not required in the prompt directly.
+
+Input:
+  - file: sample-client-excel.xlsx
+    path: ${basePath}/sample-client-excel.xlsx
+
+  - file: schema-definitions.sql
+    path: ${basePath}/schema-definitions.sql
+
+  - file: previous-excel-mapping.java
+    path: ${basePath}/previous-excel-mapping.java
+
+  - file: validation-rules-template.json
+    path: ${basePath}/validation-rules-template.json
+
+  - file: clean-code.pdf
+    path: ${basePath}/clean-code.pdf
+
+
+
+### =============== EXPECTED OUTPUT SECTION ===============
+## Informal guide for engineers or tools. Not enforced by Latai core system.
+
+ExpectedOutput:
+  type: code
+  extension: .java
+  supportFiles: true
+
+
+
+### =============== ACTUAL OUTPUT SECTION ===============
+## Declares the result of this prompt execution. May be a single file or include support files.
+
+Output:
+  type: code
+  extension: .java
+  mainFile: GeneratedExcelParser.java
+  supportFiles:
+    - GeneratedDatabaseWriter.java
+    - DataValidationRules.java
+    - ai-feedback.yaml
+    - unit-tests/GeneratedExcelParserTest.java
+
+
+
+### =============== OPTIONAL - EXTRAINFORMATION ===============
+## Arbitrary metadata for team use. Parsers will ignore this section.
+
+ExtraInfo:
+  scenario: "internal development - validator pipeline"
+  tagSet: [excel, db, ai, parser, validator]
+  executionProfile: "docker-runner-local"
+  engineeringNotes: |
+    Este PPM fue creado como parte del pipeline de prueba con GPT 4.5.
+    Se espera refactor en mod-validator-rules.
+
+
+
+
+
+
+
+
+
+
+
+
+
+### =============== LATAI PPM FILE ===============
+### Main declarative specification for orchestrating AI prompt generation with Latai
+### Defines base prompts, modular fragments, reusable parameters, inputs, expected outputs,
+### and configurations for a specific software artifact or application.
+### This file is designed for multi-module projects and reproducible prompt-driven development.
+
+### =============== PARAMS SECTION ===============
+## Reusable placeholders that can be referenced as ${paramName} anywhere in the file.
+
+Params:
+  basePath: /u01/app/ai/input
+  outputPath: /u01/app/ai/output
+  reviewerName: David S
+  teamName: Latai Framework
+
+  introFragment: |
+    Este sistema transforma archivos Excel en entradas válidas para bases de datos SQL.
+    Utiliza buenas prácticas de Java, validación de datos y generación dinámica de esquemas.
+
+  dataValidationRules: |
+    - Validar nulos en columnas críticas
+    - Asegurar tipos de dato numérico en columnas ["cantidad", "precio"]
+    - Aplicar reglas condicionales por país (si aplica)
+
+  closingFragment: |
+    Por favor incluye comentarios en el código generado,
+    y respeta las convenciones de nombres, clases y métodos como en los ejemplos dados.
+
+
+
+### =============== AUTHORING SECTION ===============
+## Descripción de autores y derechos de uso. Refleja la sección Authoring del feedback.
+
+Authoring:
+  authors:
+    - name: David S
+      email: david@latai.fuziontek.co
+    - name: System Latai
+      email: system@latai.framework
+  copyright: © 2025 David S / Latai Framework
+
+
+
+### =============== PROMPT INHERITANCE ===============
+## List of base prompt PPM files to inherit from. Order matters.
+
+ParentPrompts:
+  - base.ppm.yaml
+  - cleanCodePolicies.ppm.yaml
+
+
+
+### =============== PROMPT SECTION ===============
+## Defines the logical structure of the main prompt.
+## You can use string fragments, inline YAML text blocks, or reference Params.
+
+Prompt:
+  - ${introFragment}
+  - "Gpy, crea un programa en Java que lea un archivo Excel adjunto y lo convierta en un conjunto de INSERT SQL."
+  - "El sistema debe validar los datos siguiendo estas reglas: ${dataValidationRules}"
+  - ${closingFragment}
+
+
+
+### =============== MODULES SECTION ===============
+## List of logical prompt modules that support this generation process. Not inherited.
+
+Modules:
+  - mod-excel-parser
+  - mod-db-writer
+  - mod-validator-rules
+  - mod-logging-config
+
+
+
+### =============== EFFECTIVE PROMPT SECTION ===============
+## Defines the output location for the fully compiled Effective Prompt
+
+EffectivePPM:
+  output: ${outputPath}/EffectivePrompt.ppm.txt
+
+
+
+### =============== CONFIG SECTION ===============
+## Configuration of the model to use and its generation behavior.
+## This mirrors the Config block in the ai-feedback.yaml file.
+
+Config:
+  provider: openai
+  model: gpt
+  version: 4.5
+  extension: thinking-model
+  params:
+    - name: temperature
+      value: 0.65
+    - name: top_p
+      value: 0.85
+    - name: max_tokens
+      value: 512
+    - name: presence_penalty
+      value: 0.9
+    - name: stop
+      value: ["User:", "###"]
+    - name: user_defined_behavior
+      value: enforce-camelCase
+
+
+
+### =============== INPUT SECTION ===============
+## Defines all supporting files given to the AI model. These are contextual but not required in the prompt directly.
+
+Input:
+  - file: sample-client-excel.xlsx
+    path: ${basePath}/sample-client-excel.xlsx
+
+  - file: schema-definitions.sql
+    path: ${basePath}/schema-definitions.sql
+
+  - file: previous-excel-mapping.java
+    path: ${basePath}/previous-excel-mapping.java
+
+  - file: validation-rules-template.json
+    path: ${basePath}/validation-rules-template.json
+
+  - file: clean-code.pdf
+    path: ${basePath}/clean-code.pdf
+
+
+
+### =============== EXPECTED OUTPUT SECTION ===============
+## Informal guide for engineers or tools. Not enforced by Latai core system.
+
+ExpectedOutput:
+  type: code
+  extension: .java
+  supportFiles: true
+
+
+
+### =============== ACTUAL OUTPUT SECTION ===============
+## Declares the result of this prompt execution. May be a single file or include support files.
+
+Output:
+  type: code
+  extension: .java
+  mainFile: GeneratedExcelParser.java
+  supportFiles:
+    - GeneratedDatabaseWriter.java
+    - DataValidationRules.java
+    - ai-feedback.yaml
+    - unit-tests/GeneratedExcelParserTest.java
+
+
+
+### =============== OPTIONAL - EXTRAINFORMATION ===============
+## Arbitrary metadata for team use. Parsers will ignore this section.
+
+ExtraInfo:
+  scenario: "internal development - validator pipeline"
+  tagSet: [excel, db, ai, parser, validator]
+  executionProfile: "docker-runner-local"
+  engineeringNotes: |
+    Este PPM fue creado como parte del pipeline de prueba con GPT 4.5.
+    Se espera refactor en mod-validator-rules.
+
+
