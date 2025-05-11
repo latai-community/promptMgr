@@ -1,0 +1,6 @@
+name: mi-paquete
+  version: "1.0.0.03203023"
+    entrypoint: main.py
+  dependencies:
+flask: "^2.2.0"
+  requests: ">=2.28.0"

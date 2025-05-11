@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+        "name": {"type": "string"},
+        "version": {"type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$"},
+        "entrypoint": {"type": "string"},
+        "dependencies": {
+            "type": "object",
+            "additionalProperties": {"type": "string"}
+        }
+    },
+    "required": ["name", "version", "entrypoint"]
+}
