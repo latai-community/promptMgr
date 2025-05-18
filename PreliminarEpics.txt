@@ -1,0 +1,30 @@
+PROMPT MGR
+- E1: Validar Estructura del Proyecto Latai
+  -- U1: Como Informatico quiero que una vez descarge un proyecto pueda saber si este proyecto es compatible con Latai con el fin de validar que se autogenero con AI.
+   --- T1: Hacer un Script que al correr en la raiz del proyecto (/proj1) valide que dicho proyecto contiene la carpeta latai y las subcarpetas y archivos esperados.
+	* Carpetas que contiene Latai estan en PromptManager_Format (google Drive) : "modules, input, output".
+	* Size: S
+	* DoD: 
+		-- si proj1 no tiene carpetas => error
+		-- si proj1 tiene latinoAi , cosa latai => error
+			-- "!No puedes !"
+		-- .......
+  -- U2: Como Informatico yo quiero abrir la aplicacion y indicarle donde esta mi raiz de proyecto con el fin de que PromptMgr pueda analizar mi proyecto Latai.
+   --- T1: 
+
+- E2: Definir la arquitectura de la App
+  -- U2: Como Arquitecto Latai quiero tener una unica arquitectura de software para la aplicacion PromptMgr con el fin de que mis capas FE, BE sean claras para todos los desarrolladores
+   --- T1: Hacer reunion con los 3 AL y definir las tecnologias BE, FE
+	* DoD:
+		-- el BE tendra unica tecnologia -> Web (Navegador)
+	* Size: S
+   --- T2: Evaluar las siguientes tecnologias para creacion de una APP que corra en localhost
+	ST1* Standalone Java => David
+	ST2* Electron React => Santiago
+	ST3* SpringBoot (Tomcat) + React => Andres
+	ST4* .NET => Santiago
+	* Size :
+
+- E3: Github tools
+  -- U1: Como LataiMember quiero usar el Kanban/Scrum y necesitos .,,,. con el fin de
+    
